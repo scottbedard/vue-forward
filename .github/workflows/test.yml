@@ -14,12 +14,23 @@ jobs:
         version: 8
         run_install: false
 
+    - name: Build 2.x components
+      run: |
+        cd packages/2
+        pnpm install
+        pnpm run build
+
+    - name: Build 3.x components
+      run: |
+        cd packages/3
+        pnpm install
+        pnpm run build
+
     - name: Install dependencies
       run: pnpm install
     
     - name: Vitest
       run: pnpm run coverage
-
 
     - name: Upload coverage reports to Codecov
       uses: codecov/codecov-action@v4.0.1
