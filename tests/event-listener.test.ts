@@ -1,4 +1,4 @@
-import { createApp as createApp3, h as h3 } from 'vue3'
+import { createApp as createApp3 } from 'vue3'
 import { createApp } from '../src/index'
 import { describe, expect, it, vi } from 'vitest'
 import { EventListener as EventListener2 } from '@bedard/vue-forward-2'
