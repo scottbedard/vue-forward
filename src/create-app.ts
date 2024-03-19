@@ -1,7 +1,8 @@
-import Vue, { Component, defineAsyncComponent, h } from 'vue2'
+import { camelCase, kebabCase } from 'lodash-es'
+import Vue, { Component, defineAsyncComponent, defineComponent, h } from 'vue2'
 
 export function createApp(
-  component: ReturnType<typeof defineAsyncComponent> | Component,
+  options: ReturnType<typeof defineAsyncComponent> | Component,
   props: Record<string, unknown> = {},
 ) {
   let vm: Vue
@@ -11,12 +12,19 @@ export function createApp(
   const containerEl = document.createElement('div')
   containerEl.dataset.vApp = ''
 
-  // component params
-  const params: Record<string, any> = {
-    render: () => h(component, {
-      props,
-    }),
-  };
+  // normalize event listeners
+  const on = Object.keys(props)
+    .filter(key => key.startsWith('on') && typeof props[key] === 'function' && key.length > 2)
+    .reduce((acc, key) => {
+      acc[key.slice(2).split(':').map(name => camelCase(name)).join(':')] = props[key]
+      acc[key.slice(2).split(':').map(name => kebabCase(name)).join(':')] = props[key]
+      return acc
+    }, {} as any);
+
+  // component params  
+  const component = defineComponent({
+    render: () => h(options, { on, props }),
+  })
 
   return {
     mount(target: HTMLElement | string) {
@@ -44,7 +52,7 @@ If you want to remount the same app, move your app creation logic into a factory
       }
 
       // instantiate and mount component
-      vm = new Vue(params).$mount(containerEl)
+      vm = new Vue(component).$mount(containerEl)
 
       // return component instance
       return vm.$children[0]

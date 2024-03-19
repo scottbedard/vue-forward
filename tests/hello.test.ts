@@ -5,7 +5,7 @@ import { Hello as Hello2 } from '@bedard/vue-forward-2'
 import { Hello as Hello3 } from '@bedard/vue-forward-3'
 
 describe('hello', () => {
-  it('sfc', () => {
+  it('sfc - 2.x === 3.x', () => {
     const two = document.createElement('div')
     createApp(Hello2).mount(two)
 
@@ -15,7 +15,7 @@ describe('hello', () => {
     expect(two.outerHTML).toBe(three.outerHTML)
   })
 
-  it('render', () => {
+  it('render - 2.x === 3.x', () => {
     const two = document.createElement('div')
     createApp({ render: () => h('div', 'hello world') }).mount(two)
 

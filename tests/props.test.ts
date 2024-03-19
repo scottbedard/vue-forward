@@ -5,7 +5,7 @@ import { Props as Props2 } from '@bedard/vue-forward-2'
 import { Props as Props3 } from '@bedard/vue-forward-3'
 
 describe('props', () => {
-  it('sfc', () => {
+  it('sfc - 2.x === 3.x', () => {
     const two = document.createElement('div')
     createApp(Props2, { name: 'hello' }).mount(two)
 
@@ -20,7 +20,7 @@ describe('props', () => {
     expect(two.outerHTML).toBe(three.outerHTML)
   })
 
-  it.only('render', () => {
+  it('render - 2.x === 3.x', () => {
     const two = document.createElement('div')
     const twoComponent = {
       props: ['name'],

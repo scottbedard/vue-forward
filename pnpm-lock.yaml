@@ -11,6 +11,9 @@ devDependencies:
   '@bedard/vue-forward-3':
     specifier: file:packages/3
     version: file:packages/3
+  '@types/lodash-es':
+    specifier: ^4.17.12
+    version: 4.17.12
   '@vitejs/plugin-vue2':
     specifier: ^2.3.1
     version: 2.3.1(vite@5.1.6)(vue@3.4.21)
@@ -20,6 +23,9 @@ devDependencies:
   happy-dom:
     specifier: ^14.0.0
     version: 14.0.0
+  lodash-es:
+    specifier: ^4.17.21
+    version: 4.17.21
   typescript:
     specifier: ^5.4.2
     version: 5.4.2
@@ -440,6 +446,16 @@ packages:
 
   /@types/istanbul-lib-coverage@2.0.6:
     resolution: {integrity: sha512-2QF/t/auWm0lsy8XtKVPG19v3sSOQlJe/YHZgfjb/KBBHOGSV+J2q/S671rcq9uTBrLAXmZpqJiaQbMT+zNU1w==}
+    dev: true
+
+  /@types/lodash-es@4.17.12:
+    resolution: {integrity: sha512-0NgftHUcV4v34VhXm8QBSftKVXtbkBG3ViCjs6+eJ5a6y6Mi/jiFGPc1sC7QK+9BFhWrURE3EOggmWaSxL9OzQ==}
+    dependencies:
+      '@types/lodash': 4.17.0
+    dev: true
+
+  /@types/lodash@4.17.0:
+    resolution: {integrity: sha512-t7dhREVv6dbNj0q17X12j7yDG4bD/DHYX7o5/DbDxobP0HnGPgpRz2Ej77aL7TZT3DSw13fqUTj8J4mMnqa7WA==}
     dev: true
 
   /@vitejs/plugin-vue2@2.3.1(vite@5.1.6)(vue@3.4.21):
@@ -882,6 +898,10 @@ packages:
     dependencies:
       mlly: 1.6.1
       pkg-types: 1.0.3
+    dev: true
+
+  /lodash-es@4.17.21:
+    resolution: {integrity: sha512-mKnC+QJ9pWVzv+C4/U3rRsHapFfHvQFoFB92e52xeyGMcX6/OlIl78je1u8vePzYZSkkogMPJ2yjxxsb89cxyw==}
     dev: true
 
   /loupe@2.3.7:
