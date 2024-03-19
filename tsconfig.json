@@ -16,7 +16,7 @@
     "sourceMap": true,
     "target": "es2015",
     "types": [
-      "jest",
+      "vitest/globals",
       "node"
     ]
   },
@@ -24,6 +24,7 @@
     "node_modules",
   ],
   "include": [
+    "packages/packages.d.ts",
     "src/**/*.ts",
   ],
 }

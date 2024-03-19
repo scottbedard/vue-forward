@@ -1,0 +1,20 @@
+{
+  "name": "vue-forward-2",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.30",
+    "@vitejs/plugin-vue2": "^2.3.1",
+    "typescript": "^5.2.2",
+    "vite": "^5.1.6",
+    "vue": "^2.7.0"
+  },
+  "main": "dist/vue-forward-2.js",
+  "module": "dist/vue-forward-2.js"
+}

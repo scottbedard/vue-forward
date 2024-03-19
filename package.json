@@ -4,18 +4,22 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build": "(cd packages/2 && vite build) && (cd packages/3 && vite build)",
     "coverage": "vitest run --coverage",
     "test": "vitest"
   },
   "author": "Scott Bedard",
   "license": "MIT",
   "devDependencies": {
+    "@bedard/vue-forward-2": "file:packages/2",
+    "@bedard/vue-forward-3": "file:packages/3",
+    "@vitejs/plugin-vue2": "^2.3.1",
     "@vitest/coverage-v8": "^1.4.0",
     "happy-dom": "^14.0.0",
     "typescript": "^5.4.2",
     "vite": "^5.1.6",
     "vitest": "^1.4.0",
-    "vue2": "npm:vue@2.7",
-    "vue3": "npm:vue@3.1"
+    "vue2": "npm:vue@^2.7.0",
+    "vue3": "npm:vue@^3.4.0"
   }
 }
