@@ -9,6 +9,7 @@ export function createApp(
 
   // wrapper element
   const containerEl = document.createElement('div')
+  containerEl.dataset.vApp = ''
 
   // component params
   const params: Record<string, any> = {
@@ -18,7 +19,6 @@ export function createApp(
   return {
     mount(target: HTMLElement | string) {
       if (mounted) {
-        // eslint-disable-next-line no-console
         console.warn(`[Vue warn]: App has already been mounted.\n
 If you want to remount the same app, move your app creation logic into a factory function and create fresh app instances for each mount - e.g. \`const createMyApp = () => createApp(App)\``);
       }
@@ -34,11 +34,13 @@ If you want to remount the same app, move your app creation logic into a factory
           targetEl.innerHTML = '';
           targetEl.appendChild(containerEl);
         }
+
+        targetEl.setAttribute('data-v-app', '')
       }
 
       vm = new Vue(params).$mount(containerEl)
 
-      return vm
+      return vm.$children[0]
     }
   }
 }
