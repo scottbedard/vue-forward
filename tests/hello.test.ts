@@ -4,7 +4,7 @@ import { describe, expect, it } from 'vitest'
 import { Hello as Hello2 } from '@bedard/vue-forward-2'
 import { Hello as Hello3 } from '@bedard/vue-forward-3'
 
-describe('Hello', () => {
+describe('hello', () => {
   it('sfc', () => {
     const two = document.createElement('div')
     createApp(Hello2).mount(two)
@@ -15,7 +15,7 @@ describe('Hello', () => {
     expect(two.outerHTML).toBe(three.outerHTML)
   })
 
-  it('render fn', () => {
+  it('render', () => {
     const two = document.createElement('div')
     createApp({ render: () => h('div', 'hello world') }).mount(two)
 
