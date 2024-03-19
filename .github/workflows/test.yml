@@ -17,7 +17,7 @@ jobs:
       run: pnpm install
     
     - name: Vitest
-      run: pnpm test
+      run: pnpm run coverage
 
 
     - name: Upload coverage reports to Codecov
