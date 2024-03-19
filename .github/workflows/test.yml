@@ -17,4 +17,4 @@ jobs:
       run: pnpm install
     
     - name: Vitest
-      run: pnpm Test
+      run: pnpm test
