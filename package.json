@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "coverage": "vitest run --coverage",
     "test": "vitest"
   },
   "author": "Scott Bedard",
