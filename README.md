@@ -14,13 +14,11 @@ The basic workflow is as follows...
 4. Pick off errors and begin disabling 2.x compatibility
 5. Upgrade to Vue latest 🎉
 
-## Getting started
-
-No docs yet
+To get started, `npm install @bedard/vue-forward`.
 
 ## Basic usage
 
-[Application instances](https://vuejs.org/guide/essentials/application.html#the-application-instance) are created using `createApp`.
+[Application instances](https://vuejs.org/guide/essentials/application.html#the-application-instance) are created using [`createApp`](https://vuejs.org/api/application.html#createapp).
 
 ```js
 import { createApp } from '@bedard/vue-forward'
@@ -35,9 +33,9 @@ app.mount('#target')
 There are a few things to note about these instances,
 
 - They're isolated from each other
-- They mimic [`createApp`](https://vuejs.org/api/application.html#createapp) as closely as possible
+- They mimic 3.x as closely as possible
 
-Here's an example of a component migration.
+Here's an example component migration,
 
 ```js
 // before
@@ -65,13 +63,13 @@ const app = createApp(User, {
 })
 ```
 
-Attach to the DOM using [`mount`](https://vuejs.org/api/application.html#app-mount). This uses 3.x mounting behavior, [more info here](https://v3-migration.vuejs.org/breaking-changes/mount-changes.html#mounted-application-does-not-replace-the-element).
+Attach to the DOM using [`mount`](https://vuejs.org/api/application.html#app-mount). This uses 3.x mouting behavior, [inserting as a child rather than replacing](https://v3-migration.vuejs.org/breaking-changes/mount-changes.html#mounted-application-does-not-replace-the-element).
 
 ```js
 app.mount('#target')
 ```
 
-Remove an element with [`unmount`](https://vuejs.org/api/application.html#app-unmount). Once an element is unmounted, it cannot be mounted again.
+And remove with [`unmount`](https://vuejs.org/api/application.html#app-unmount). Once an element is unmounted, it cannot be mounted again.
 
 ```js
 app.unmount()
