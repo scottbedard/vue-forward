@@ -1,10 +1,12 @@
 import { camelCase, kebabCase } from 'lodash-es'
+import { createLocalVue } from './utils'
 import Vue, { Component, defineAsyncComponent, defineComponent, h } from 'vue2'
 
 export function createApp(
   options: ReturnType<typeof defineAsyncComponent> | Component,
   props: Record<string, unknown> = {},
 ) {
+  const LocalVue = createLocalVue()
   let vm: Vue
   let mounted = false
 
@@ -26,9 +28,13 @@ export function createApp(
     render: () => h(options, { on, props }),
   })
 
-  return {
+  const app = {
+    mixin(obj: any) {
+      LocalVue.mixin(obj)
+      
+      return app
+    },
     mount(target: HTMLElement | string) {
-
       // create or replace target element
       if (!vm) {
         const targetEl = typeof target === 'string'
@@ -56,10 +62,12 @@ If you want to remount the same app, move your app creation logic into a factory
       mounted = true
 
       // instantiate and mount component
-      vm = new Vue(component).$mount(containerEl)
+      vm = new LocalVue(component).$mount(containerEl)
 
       // return component instance
       return vm.$children[0]
     }
   }
+
+  return app
 }
