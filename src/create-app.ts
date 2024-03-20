@@ -28,13 +28,6 @@ export function createApp(
 
   return {
     mount(target: HTMLElement | string) {
-      // log 3.x warning if already mounted
-      if (mounted) {
-        console.warn(`[Vue warn]: App has already been mounted.\n
-If you want to remount the same app, move your app creation logic into a factory function and create fresh app instances for each mount - e.g. \`const createMyApp = () => createApp(App)\``);
-      }
-
-      mounted = true
 
       // create or replace target element
       if (!vm) {
@@ -50,6 +43,17 @@ If you want to remount the same app, move your app creation logic into a factory
         // attach 3.x root attribute to target el
         targetEl.setAttribute('data-v-app', '')
       }
+
+      // clear target if already mounted
+      if (mounted) {
+        console.warn(`[Vue warn]: App has already been mounted.\n
+If you want to remount the same app, move your app creation logic into a factory function and create fresh app instances for each mount - e.g. \`const createMyApp = () => createApp(App)\``);
+
+        vm.$el.remove()
+        return
+      }
+
+      mounted = true
 
       // instantiate and mount component
       vm = new Vue(component).$mount(containerEl)

@@ -1,6 +1,7 @@
+import { afterEach, describe, expect, it, vi } from 'vitest'
 import { createApp as createApp3, h as h3 } from 'vue3'
 import { createApp, h } from '../src/index'
-import { afterEach, describe, expect, it, vi } from 'vitest'
+import { noop } from 'lodash-es'
 
 describe('mount', () => {
   afterEach(() => {
@@ -36,16 +37,24 @@ describe('mount', () => {
     expect(two.innerHTML).toBe(three.innerHTML)
   })
 
-  it('remount warning', () => {
-    const warn = vi.spyOn(console, 'warn')
-    const app = createApp({ render: () => h('div') })
-
-    app.mount(document.createElement('div'))
+  it('remount', () => {
+    const warn = vi.spyOn(console, 'warn').mockImplementation(noop)
+    const two = document.createElement('div')
+    const twoApp = createApp({ render: () => h('div', 'test') })
+    twoApp.mount(two)
 
     expect(warn).not.toHaveBeenCalled()
-    
-    app.mount(document.createElement('div'))
+
+    twoApp.mount(two)
 
     expect(warn).toHaveBeenCalled()
+    expect(two.innerHTML).toBe('')
+
+    const three = document.createElement('div')
+    const threeApp = createApp3({ render: () => h3('div', 'test') })
+    threeApp.mount(three)
+    threeApp.mount(three)
+
+    expect(three.innerHTML).toBe(two.innerHTML)
   })
 })
