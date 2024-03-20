@@ -66,6 +66,12 @@ If you want to remount the same app, move your app creation logic into a factory
 
       // return component instance
       return vm.$children[0]
+    },
+    unmount() {
+      if (vm) {
+        vm.$destroy()
+        vm.$el.remove()
+      }
     }
   }
 
