@@ -5,7 +5,7 @@ import { Hello as Hello2 } from '@bedard/vue-forward-2'
 import { Hello as Hello3 } from '@bedard/vue-forward-3'
 
 describe('unmount', () => {
-  it.only('2.x === 3.x', () => {
+  it('2.x === 3.x', () => {
     const two = document.createElement('div')
 
     const twoApp = createApp(Hello2)
