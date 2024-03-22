@@ -39,28 +39,30 @@ Here's an example component migration,
 
 ```js
 // before
-import Vue from 'vue'
+import Vue, { h } from 'vue'
 
-const app = new Vue(User, {
-  props: {
-    username: 'bob'
-  },
-  on: {
-    click() {
-      // ...
-    }
-  }
-})
+new Vue({
+  render: () => h(User, {
+    props: {
+      username: 'bob'
+    },
+    on: {
+      click() {
+        // ...
+      }
+    },
+  }),
+}).$mount('#app')
 
 // after
 import { createApp } from '@bedard/vue-forward'
 
-const app = createApp(User, {
+createApp(User, {
   username: 'bob',
   onClick() {
     // ...
   },
-})
+}).mount('#app')
 ```
 
 Attach to the DOM using [`mount`](https://vuejs.org/api/application.html#app-mount). This uses 3.x mouting behavior, [inserting as a child rather than replacing](https://v3-migration.vuejs.org/breaking-changes/mount-changes.html#mounted-application-does-not-replace-the-element).
@@ -73,6 +75,36 @@ And remove with [`unmount`](https://vuejs.org/api/application.html#app-unmount).
 
 ```js
 app.unmount()
+```
+
+## Vuex
+
+Use [`createStore`](https://vuex.vuejs.org/api/#createstore) to create a forward-compatible store. Be aware though, this object is not a `Vuex.Store`, but rather a class containing it's options. This is done to better follow the 3.x API by handling `Vue.use(Vuex)` behind the scenes.
+
+```js
+import { createApp, createStore } from '@bedard/vue-forward'
+
+const store = createStore({ ... })
+
+createApp(MyApp)
+  .use(store)
+  .mount(...)
+```
+
+If you need to access the store outside of the component tree, you'll need to instantiate it and install Vuex manually.
+
+```js
+import { createApp } from '@bedard/vue-forward'
+import Vuex from 'vuex'
+import Vue from 'vue'
+
+Vue.use(Vuex)
+
+const store = Vuex.Store({ ... })
+
+createApp(MyApp)
+  .use(store)
+  .mount(...)
 ```
 
 ## License
