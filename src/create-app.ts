@@ -1,7 +1,7 @@
 import { camelCase, kebabCase } from 'lodash-es'
 import { createLocalVue } from './utils'
-import { Store } from '../src/create-store'
-import Vue, { Component, defineAsyncComponent, defineComponent, h } from 'vue2'
+import { ForwardStore } from '../src/create-store'
+import Vue, { Component, defineAsyncComponent, defineComponent, h } from 'vue'
 
 export function createApp(
   options: ReturnType<typeof defineAsyncComponent> | Component,
@@ -76,12 +76,17 @@ If you want to remount the same app, move your app creation logic into a factory
       }
     },
     use(plugin: any) {
-      if (plugin instanceof Store) {
+      // vuex store
+      if (plugin instanceof ForwardStore) {
         LocalVue.use(plugin.vuex)
         component.store = new plugin.vuex.Store(plugin.options);
-      } else if ('currentRoute' in plugin) {
-        component.router = plugin;
-      } else {
+      }
+
+      // else if ('currentRoute' in plugin) {
+      //   component.router = plugin;
+      // }
+      
+      else {
         LocalVue.use(plugin);
       }
 

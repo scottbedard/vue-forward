@@ -1,5 +1,7 @@
 import { createApp, createStore, h } from '../src/index'
 import { describe, expect, it } from 'vitest'
+import Vue from 'vue'
+import Vuex from 'vuex'
 
 describe('vuex', () => {
   it('use store', () => {

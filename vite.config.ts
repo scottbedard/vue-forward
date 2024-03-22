@@ -10,11 +10,10 @@ export default defineConfig({
       name: 'VueForward',
     },
     rollupOptions: {
-      external: ['vue', 'vue2', 'vuex'],
+      external: ['vue', 'vuex'],
       output: {
         globals: {
           vue: 'Vue',
-          vue2: 'Vue',
           vuex: 'Vuex',
         },
       },

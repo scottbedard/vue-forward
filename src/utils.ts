@@ -1,4 +1,4 @@
-import Vue, { VueConstructor } from 'vue2'
+import Vue, { VueConstructor } from 'vue'
 
 export function createLocalVue(
   config: Partial<VueConstructor['config']> = {}

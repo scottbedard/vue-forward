@@ -1,8 +1,7 @@
 import Vuex from 'vuex'
 
-export class Store {
+export class ForwardStore {
   options: any
-
   vuex: any
 
   constructor(options: ConstructorParameters<typeof Vuex.Store>[0]) {
@@ -12,5 +11,5 @@ export class Store {
 }
 
 export function createStore(options: ConstructorParameters<typeof Vuex.Store>[0]) {
-  return new Store(options)
+  return new ForwardStore(options)
 }

@@ -23,9 +23,16 @@
     "typescript": "^5.4.2",
     "vite": "^5.1.6",
     "vitest": "^1.4.0",
-    "vue-router": "^4.3.0",
-    "vue2": "npm:vue@^2.7.0",
+    "vue": "^2.7.0",
     "vue3": "npm:vue@^3.4.0",
     "vuex": "^3.0.0"
+  },
+  "peerDependencies": {
+    "vuex": "^3.0.0"
+  },
+  "peerDependenciesMeta": {
+    "vuex": {
+      "optional": true
+    }
   }
 }
