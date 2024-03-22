@@ -1,4 +1,3 @@
-import { cloneDeep } from 'lodash-es'
 import Vue, { VueConstructor } from 'vue2'
 
 export function createLocalVue(
@@ -13,7 +12,7 @@ export function createLocalVue(
       // cloneDeep checks that the instance has a Symbol
       // which errors in Vue < 2.17 (https://github.com/vuejs/vue/pull/7878)
       try {
-        instance[key] = typeof original === 'object' ? cloneDeep(original) : original
+        instance[key] = typeof original === 'object' ? JSON.parse(JSON.stringify(original)) : original
       } catch (e) {
         instance[key] = original
       }
@@ -21,7 +20,7 @@ export function createLocalVue(
   })
 
   // config is not enumerable
-  instance.config = cloneDeep(Vue.config)
+  instance.config = JSON.parse(JSON.stringify(Vue.config))
 
   // if a user defined errorHandler is defined by a localVue instance via createLocalVue, register it
   instance.config.errorHandler = config.errorHandler

@@ -1,5 +1,6 @@
 import { camelCase, kebabCase } from 'lodash-es'
 import { createLocalVue } from './utils'
+import { Store } from '../src/create-store'
 import Vue, { Component, defineAsyncComponent, defineComponent, h } from 'vue2'
 
 export function createApp(
@@ -62,6 +63,7 @@ If you want to remount the same app, move your app creation logic into a factory
       mounted = true
 
       // instantiate and mount component
+      // console.log('mount', component)
       vm = new LocalVue(component).$mount(containerEl)
 
       // return component instance
@@ -72,7 +74,19 @@ If you want to remount the same app, move your app creation logic into a factory
         vm.$destroy()
         vm.$el.remove()
       }
-    }
+    },
+    use(plugin: any) {
+      if (plugin instanceof Store) {
+        LocalVue.use(plugin.vuex)
+        component.store = new plugin.vuex.Store(plugin.options);
+      } else if ('currentRoute' in plugin) {
+        component.router = plugin;
+      } else {
+        LocalVue.use(plugin);
+      }
+
+      return app;
+    },
   }
 
   return app
