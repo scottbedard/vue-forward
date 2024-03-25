@@ -55,34 +55,25 @@ And remove with [`unmount`](https://vuejs.org/api/application.html#app-unmount).
 app.unmount()
 ```
 
-## Vuex
+## Vuex & Vue Router
 
-Use [`createStore`](https://vuex.vuejs.org/api/#createstore) to create a forward-compatible store. Be aware though, this object is not a `Vuex.Store`, but rather a class containing it's options. This is done to better follow the 3.x API by handling `Vue.use(Vuex)` behind the scenes.
+Use [`createStore`](https://vuex.vuejs.org/api/#createstore) and [`createRouter`]() to create a forward compatible stores and routers.
 
 ```js
-import { createApp, createStore } from '@bedard/vue-forward'
+import { createApp, createRouter, createStore } from '@bedard/vue-forward'
 
-const store = createStore({ ... })
+const router = createRouter({
+  routes: [ ... ],
+})
+
+const store = createStore({
+  state: { ... }
+})
 
 createApp(MyApp)
   .use(store)
-  .mount(...)
-```
-
-If you need to access the store outside of the component tree, you'll need to instantiate it and install Vuex manually.
-
-```js
-import { createApp } from '@bedard/vue-forward'
-import Vuex from 'vuex'
-import Vue from 'vue'
-
-Vue.use(Vuex)
-
-const store = Vuex.Store({ ... })
-
-createApp(MyApp)
-  .use(store)
-  .mount(...)
+  .use(router)
+  .mount('#app')
 ```
 
 ## License
