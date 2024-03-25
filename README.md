@@ -30,7 +30,7 @@ const app = createApp(RootComponent)
 app.mount('#app')
 ```
 
-It's impportant to note that <ins>apps are independent of one another</ins>. Another important difference is how props and listeners are defined. While migrating, you'll need to rename your events to following the 3.x naming convention.
+It's important to note that <ins>apps are independent of one another</ins>. Another important difference is how props and listeners are defined. While migrating, you'll need to rename your events to following the 3.x naming convention.
 
 ```js
 createApp(User, {
