@@ -11,14 +11,12 @@ Forward compatibility is key to migrating large, complex codebases. Vue 2.7 does
 A typical migration might look like this...
 
 1. Refactor from `new Vue(...)` to `createApp(...)`
-2. Update other code that isn't forward-compatible, [see docs &rarr;](https://v3-migration.vuejs.org/breaking-changes/)
-3. Upgrade to 3.1 with compatibility flags, [see docs &rarr;](https://v3-migration.vuejs.org/migration-build.html)
-4. Pick off errors and remove 2.x compatibility
-5. Upgrade Vue to latest, and remove this library 🎉
+2. Migrate anything else that isn't forward-compatible, [see docs &rarr;](https://v3-migration.vuejs.org/breaking-changes/)
+3. Upgrade to 3.1 and remove this library 🎉
 
 Now that we know the plan, `npm install @bedard/vue-forward`
 
-## Getting started
+## Basic usage
 
 A core concept in Vue 3 is [the application instance](https://vuejs.org/guide/essentials/application.html#the-application-instance). It's primary responsibility is to manage the root component, and install globals like directives and plugins. Here is a basic example.
 
