@@ -76,11 +76,7 @@ If you want to remount the same app, move your app creation logic into a factory
         vm.$el.remove()
       }
     },
-    use(p: any) {
-      let plugin = typeof p === 'function' ? p() : p
-  
-      LocalVue.use(plugin)
-
+    use(plugin: any) {
       // vuex
       if ('commit' in plugin && 'dispatch' in plugin && 'getters' in plugin) {
         component.store = plugin
