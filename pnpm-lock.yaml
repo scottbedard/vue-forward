@@ -41,6 +41,9 @@ devDependencies:
   vue:
     specifier: ^2.7.0
     version: 2.7.16
+  vue-router:
+    specifier: ^3.0.0
+    version: 3.6.5(vue@2.7.16)
   vue3:
     specifier: npm:vue@^3.4.0
     version: /vue@3.4.21(typescript@5.4.2)
@@ -1333,6 +1336,14 @@ packages:
       - sugarss
       - supports-color
       - terser
+    dev: true
+
+  /vue-router@3.6.5(vue@2.7.16):
+    resolution: {integrity: sha512-VYXZQLtjuvKxxcshuRAwjHnciqZVoXAjTjcqBTz4rKc8qih9g9pI3hbDjmqXaHdgL3v8pV6P8Z335XvHzESxLQ==}
+    peerDependencies:
+      vue: ^2
+    dependencies:
+      vue: 2.7.16
     dev: true
 
   /vue@2.7.16:

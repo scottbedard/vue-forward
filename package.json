@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build:vue": "(cd packages/2 && vite build) && (cd packages/3 && vite build)",
+    "build:versions": "(cd versions/2.7 && vite build) && (cd versions/3 && vite build)",
     "build": "vite build",
     "coverage": "vitest run --coverage",
     "test": "vitest"
@@ -12,8 +12,8 @@
   "author": "Scott Bedard",
   "license": "MIT",
   "devDependencies": {
-    "@bedard/vue-forward-2": "file:packages/2",
-    "@bedard/vue-forward-3": "file:packages/3",
+    "@bedard/vue-forward-2": "file:versions/2.7",
+    "@bedard/vue-forward-3": "file:versions/3",
     "@types/lodash-es": "^4.17.12",
     "@types/node": "^20.11.30",
     "@vitejs/plugin-vue2": "^2.3.1",
@@ -24,13 +24,18 @@
     "vite": "^5.1.6",
     "vitest": "^1.4.0",
     "vue": "^2.7.0",
+    "vue-router": "^3.0.0",
     "vue3": "npm:vue@^3.4.0",
     "vuex": "^3.0.0"
   },
   "peerDependencies": {
+    "vue-router": "^3.0.0",
     "vuex": "^3.0.0"
   },
   "peerDependenciesMeta": {
+    "vue-router": {
+      "optional": true
+    },
     "vuex": {
       "optional": true
     }

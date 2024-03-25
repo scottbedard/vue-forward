@@ -53,5 +53,7 @@ export function createLocalVue(
     use.call(instance, plugin, ...rest)
   }
 
+  instance.util = { ...Vue.util }
+
   return instance
 }
