@@ -31,6 +31,11 @@ export function createApp(
   })
 
   const app = {
+    component(name: string, obj: any) {
+      LocalVue.component(name, obj)
+
+      return app
+    },
     mixin(obj: any) {
       LocalVue.mixin(obj)
       
