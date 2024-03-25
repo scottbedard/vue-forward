@@ -4,21 +4,23 @@
 [![Codecov](https://img.shields.io/codecov/c/github/scottbedard/vue-forward?token=IQSd84vERj)](https://codecov.io/gh/scottbedard/vue-forward)
 [![License](https://img.shields.io/badge/license-MIT-blue)](https://github.com/scottbedard/vue-forward/blob/main/LICENSE)
 
-Forward-compatible helpers to bridge the gap between Vue 2 and 3. These functions make 2.x components look and feel like 3.x, so large codebases can migrate safely and incrementally.
+Behold, the missing [`createApp`](https://vuejs.org/api/application.html#createapp) function from Vue 2.7!
 
-The basic workflow is as follows...
+Forward compatibility is key to migrating large, complex codebases. Vue 2.7 does a great job with many 3.x APIs, but doesn't include the critical `createApp`. This repo implements that function with a version that follows Vue 3 as closely as possible.
 
-1. [Start from Vue 2.7](https://v2.vuejs.org/v2/guide/migration-vue-2-7)
-2. Migrate root components from `new Vue(...)` to `createApp(...)`
-3. Upgrade to Vue 3.1 with [compatibility flags](https://v3-migration.vuejs.org/migration-build.html)
-4. Pick off errors and begin disabling 2.x compatibility
-5. Upgrade to Vue latest 🎉
+A typical migration might look like this...
 
-To get started, `npm install @bedard/vue-forward`.
+1. Refactor from `new Vue(...)` to `createApp(...)`
+2. Update other code that isn't forward-compatible, [see docs &rarr;](https://v3-migration.vuejs.org/breaking-changes/)
+3. Upgrade to 3.1 with compatibility flags, [see docs &rarr;](https://v3-migration.vuejs.org/migration-build.html)
+4. Pick off errors and remove 2.x compatibility
+5. Upgrade Vue to latest, and remove this library 🎉
 
-## Basic usage
+Now that we know the plan, `npm install @bedard/vue-forward`
 
-[Application instances](https://vuejs.org/guide/essentials/application.html#the-application-instance) are created using [`createApp`](https://vuejs.org/api/application.html#createapp).
+## Getting started
+
+A core concept in Vue 3 is [the application instance](https://vuejs.org/guide/essentials/application.html#the-application-instance). It's primary responsibility is to manage the root component, and install globals like directives and plugins. Here is a basic example.
 
 ```js
 import { createApp } from '@bedard/vue-forward'
@@ -27,42 +29,18 @@ const app = createApp(RootComponent)
   .use(router)
   .mixin(i18n)
 
-app.mount('#target')
+app.mount('#app')
 ```
 
-There are a few things to note about these instances,
-
-- They're isolated from each other
-- They mimic 3.x as closely as possible
-
-Here's an example component migration,
+It's impportant to note that <ins>apps are independent of one another</ins>. Another important difference is how props and listeners are defined. While migrating, you'll need to rename your events to following the 3.x naming convention.
 
 ```js
-// before
-import Vue, { h } from 'vue'
-
-new Vue({
-  render: () => h(User, {
-    props: {
-      username: 'bob'
-    },
-    on: {
-      click() {
-        // ...
-      }
-    },
-  }),
-}).$mount('#app')
-
-// after
-import { createApp } from '@bedard/vue-forward'
-
 createApp(User, {
   username: 'bob',
   onClick() {
     // ...
   },
-}).mount('#app')
+})
 ```
 
 Attach to the DOM using [`mount`](https://vuejs.org/api/application.html#app-mount). This uses 3.x mouting behavior, [inserting as a child rather than replacing](https://v3-migration.vuejs.org/breaking-changes/mount-changes.html#mounted-application-does-not-replace-the-element).
