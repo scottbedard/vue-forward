@@ -16,13 +16,13 @@ jobs:
 
     - name: Build 2.x components
       run: |
-        cd packages/2
+        cd versions/2.7
         pnpm install
         pnpm run build
 
     - name: Build 3.x components
       run: |
-        cd packages/3
+        cd versions/3
         pnpm install
         pnpm run build
 
