@@ -1,6 +1,13 @@
-import { fail } from 'assert'
-import { createApp, createRouter, h } from '../src/index'
 import { describe, expect, it } from 'vitest'
+
+import {
+  createApp,
+  createMemoryHistory,
+  createRouter,
+  createWebHashHistory,
+  createWebHistory,
+  h,
+} from '../src/index'
 
 describe('router', () => {
   it('use router', () => {
@@ -20,5 +27,29 @@ describe('router', () => {
       .mount(el)
 
     expect(el.textContent).toBe('Hello world')
+  })
+
+  it('history mode', () => {
+    const router = createRouter({
+      mode: createWebHistory(),
+    })
+    
+    expect(router.mode).toBe('history')
+  })
+
+  it('hash mode', () => {
+    const router = createRouter({
+      mode: createWebHashHistory(),
+    })
+    
+    expect(router.mode).toBe('hash')
+  })
+
+  it('memory mode', () => {
+    const router = createRouter({
+      mode: createMemoryHistory(),
+    })
+    
+    expect(router.mode).toBe('abstract')
   })
 })
