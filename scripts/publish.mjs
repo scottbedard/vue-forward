@@ -16,6 +16,4 @@ async function cli() {
   exec('pnpm build && pnpm publish')
 }
 
-if (require.main === module) {
-  cli()
-}
+cli()
