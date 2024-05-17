@@ -9,12 +9,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+
+      - uses: pnpm/action-setup@v2
+        name: Install pnpm
         with:
-          registry-url: https://registry.npmjs.org/
-      - run: npm install
-      - run: npm run build
-      - run: npm test
+          version: 8
+          run_install: false
+
+      - run: pnpm install
+
+      - run: pnpm run build
+
+      - run: pnpm test
+
       - run: node ./scripts/publish.cjs
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
