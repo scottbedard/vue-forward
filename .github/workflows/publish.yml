@@ -8,14 +8,33 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+    - uses: actions/checkout@v4
 
-      - run: npm install --no-frozen-lockfile
+    - uses: pnpm/action-setup@v2
+      name: Install pnpm
+      with:
+        version: 8
+        run_install: false
 
-      - run: npm run build
+    - name: Build 2.x components
+      run: |
+        cd versions/2.7
+        pnpm install --no-frozen-lockfile
+        pnpm run build
 
-      - run: npm test
+    - name: Build 3.x components
+      run: |
+        cd versions/3
+        pnpm install --no-frozen-lockfile
+        pnpm run build
 
-      - run: node ./scripts/publish.cjs
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+    - name: Install dependencies
+      run: pnpm install --no-frozen-lockfile
+    
+    - name: Vitest
+      run: pnpm run coverage
+
+    - name: Publish
+      run: node ./scripts/publish.cjs
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
