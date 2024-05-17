@@ -1,7 +1,7 @@
 import { execSync as exec } from 'child_process'
 import fs from 'fs'
 import path from 'path'
-import pkg from '../package.json'
+import pkg from '../package.json' with { type: 'json' }
 
 const indexPath = path.resolve(__dirname, '../src/index.ts')
 
