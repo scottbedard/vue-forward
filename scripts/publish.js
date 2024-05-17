@@ -1,7 +1,7 @@
-const exec = require('child_process').execSync
-const fs = require('fs')
-const path = require('path')
-const pkg = require('../package.json')
+import { execSync as exec } from 'child_process'
+import fs from 'fs'
+import path from 'path'
+import pkg from '../package.json'
 
 const indexPath = path.resolve(__dirname, '../src/index.ts')
 
