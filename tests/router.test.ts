@@ -31,7 +31,7 @@ describe('router', () => {
 
   it('history mode', () => {
     const router = createRouter({
-      mode: createWebHistory(),
+      history: createWebHistory(),
     })
     
     expect(router.mode).toBe('history')
@@ -39,7 +39,7 @@ describe('router', () => {
 
   it('hash mode', () => {
     const router = createRouter({
-      mode: createWebHashHistory(),
+      history: createWebHashHistory(),
     })
     
     expect(router.mode).toBe('hash')
@@ -47,7 +47,7 @@ describe('router', () => {
 
   it('memory mode', () => {
     const router = createRouter({
-      mode: createMemoryHistory(),
+      history: createMemoryHistory(),
     })
     
     expect(router.mode).toBe('abstract')

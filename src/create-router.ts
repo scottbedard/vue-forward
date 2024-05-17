@@ -1,10 +1,14 @@
 import VueRouter from 'vue-router'
 import Vue from 'vue'
 
-export function createRouter(options: ConstructorParameters<typeof VueRouter>[0]) {
+type CreateRouterParams = Omit<ConstructorParameters<typeof VueRouter>[0], 'mode'> & {
+  history: ConstructorParameters<typeof VueRouter>[0]['mode']
+}
+
+export function createRouter(options: CreateRouterParams) {
   Vue.use(VueRouter)
 
-  return new VueRouter(options)
+  return new VueRouter({ ...options, mode: options.history })
 }
 
 export function createMemoryHistory() {
