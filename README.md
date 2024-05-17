@@ -6,31 +6,31 @@
 
 Behold, the missing [`createApp`](https://vuejs.org/api/application.html#createapp) function from Vue 2.7!
 
-Forward compatibility is key to migrating large, complex codebases. Vue 2.7 does a great job with many 3.x APIs, but doesn't include the critical `createApp`. This repo implements that function with a version that follows Vue 3 as closely as possible.
+Forward compatibility is key to migrating large, complex codebases. Vue 2.7 provides many 3.x features, but it's missing the critical `createApp` function! This project implements that function while following 3.x as closely as possible.
 
 A typical migration might look like this...
 
 1. Refactor from `new Vue(...)` to `createApp(...)`
-2. Migrate anything else that isn't forward-compatible, [see docs &rarr;](https://v3-migration.vuejs.org/breaking-changes/)
+2. Migrate anything else that isn't forward-compatible, [see here &rarr;](https://v3-migration.vuejs.org/breaking-changes/)
 3. Upgrade to 3.1 and remove this library 🎉
 
 Now that we know the plan, `npm install @bedard/vue-forward`
 
-## Basic usage
+## Getting started
 
-A core concept in Vue 3 is [the application instance](https://vuejs.org/guide/essentials/application.html#the-application-instance). It's primary responsibility is to manage the root component, and install globals like directives and plugins. Here is a basic example.
+A core concept in Vue 3 is [the application instance](https://vuejs.org/guide/essentials/application.html#the-application-instance). It's responsible for the root component and registering any globals. Here we'll use it to create a component tree and mount it to the DOM.
 
 ```js
 import { createApp } from '@bedard/vue-forward'
 
-const app = createApp(RootComponent)
+const app = createApp(App)
   .use(router)
   .mixin(i18n)
 
 app.mount('#app')
 ```
 
-It's important to note that <ins>apps are independent of one another</ins>. Another important difference is how props and listeners are defined. While migrating, you'll need to rename your events to following the 3.x naming convention.
+For any root props or event listeners, we'll use the same naming conventions as Vue 3.
 
 ```js
 createApp(User, {
@@ -41,13 +41,13 @@ createApp(User, {
 })
 ```
 
-Attach to the DOM using [`mount`](https://vuejs.org/api/application.html#app-mount). This uses 3.x mouting behavior, [inserting as a child rather than replacing](https://v3-migration.vuejs.org/breaking-changes/mount-changes.html#mounted-application-does-not-replace-the-element).
+Attach to the DOM using [`mount`](https://vuejs.org/api/application.html#app-mount). This uses [3.x mouting behavior](https://v3-migration.vuejs.org/breaking-changes/mount-changes.html#mounted-application-does-not-replace-the-element), inserting as a child node rather than replacing the target.
 
 ```js
 app.mount('#target')
 ```
 
-And remove with [`unmount`](https://vuejs.org/api/application.html#app-unmount). Once an element is unmounted, it cannot be mounted again.
+Call [`unmount`](https://vuejs.org/api/application.html#app-unmount) to destroy the instance. Once unmounted, an app cannot be mounted again.
 
 ```js
 app.unmount()
@@ -58,9 +58,10 @@ app.unmount()
 Use [`createStore`](https://vuex.vuejs.org/api/#createstore) and [`createRouter`]() to create a forward compatible stores and routers.
 
 ```js
-import { createApp, createRouter, createStore } from '@bedard/vue-forward'
+import { createApp, createRouter, createStore, createWebHistory } from '@bedard/vue-forward'
 
 const router = createRouter({
+  history: createWebHistory(),
   routes: [ ... ],
 })
 
@@ -68,10 +69,9 @@ const store = createStore({
   state: { ... }
 })
 
-createApp(MyApp)
+createApp(App)
   .use(store)
   .use(router)
-  .mount('#app')
 ```
 
 ## License
