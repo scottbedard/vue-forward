@@ -16,3 +16,5 @@ export {
 export {
   h,
 } from './h'
+
+export const version = 'x.y.z'
