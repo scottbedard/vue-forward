@@ -10,17 +10,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: pnpm/action-setup@v2
-        name: Install pnpm
-        with:
-          version: 8
-          run_install: false
+      - run: npm install --no-frozen-lockfile
 
-      - run: pnpm install --no-frozen-lockfile
+      - run: npm run build
 
-      - run: pnpm run build
-
-      - run: pnpm test
+      - run: npm test
 
       - run: node ./scripts/publish.cjs
         env:
