@@ -1,6 +1,7 @@
 /// <reference types="vitest" />
 import { defineConfig } from 'vite'
 import { resolve } from 'path'
+import dts from 'vite-plugin-dts'
 
 export default defineConfig({
   build: {
@@ -10,7 +11,7 @@ export default defineConfig({
       name: 'VueForward',
     },
     rollupOptions: {
-      external: ['vue'],
+      external: ['vue', 'vue-router', 'vuex'],
       output: {
         globals: {
           vue: 'Vue',
@@ -19,6 +20,7 @@ export default defineConfig({
       },
     },
   },
+  plugins: [],
   test: {
     coverage: {
       exclude: ['packages'],

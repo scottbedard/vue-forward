@@ -1,7 +1,5 @@
 import { camelCase, kebabCase } from 'lodash-es'
 import { createLocalVue } from './utils'
-import { ForwardRouter } from '../src/create-router'
-import { ForwardStore } from '../src/create-store'
 import Vue, { Component, defineAsyncComponent, defineComponent, h } from 'vue'
 
 export function createApp(
