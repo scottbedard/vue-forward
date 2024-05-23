@@ -1,4 +1,4 @@
-import { execSync as exec } from 'child_process'
+import { execSync } from 'child_process'
 import { fileURLToPath } from 'url'
 import fs from 'fs'
 import path from 'path'
