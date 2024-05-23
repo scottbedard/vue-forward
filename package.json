@@ -16,6 +16,7 @@
     "lodash-es": "^4.17.21",
     "typescript": "^5.4.2",
     "vite": "^5.1.6",
+    "vite-plugin-dts": "^3.9.1",
     "vitest": "^1.4.0",
     "vue": "^2.7.0",
     "vue3": "npm:vue@^3.4.0"
