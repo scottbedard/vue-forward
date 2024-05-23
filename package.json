@@ -19,7 +19,8 @@
     "vuex": "^3.0.0"
   },
   "files": [
-    "dist"
+    "dist",
+    "src"
   ],
   "license": "MIT",
   "main": "dist/vue-forward.js",
