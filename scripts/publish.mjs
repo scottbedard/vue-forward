@@ -13,7 +13,7 @@ async function cli() {
 
   fs.writeFileSync(index, src)
 
-  exec('pnpm build && pnpm publish --access public')
+  exec('pnpm build')
 }
 
 cli()
