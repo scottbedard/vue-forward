@@ -13,7 +13,7 @@ async function cli() {
 
   fs.writeFileSync(index, src)
 
-  execSync(`echo "Building v${pkg.version}...`)
+  execSync(`echo "Building v${pkg.version}..."`)
 
   execSync('pnpm build')
 
