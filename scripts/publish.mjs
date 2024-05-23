@@ -13,7 +13,13 @@ async function cli() {
 
   fs.writeFileSync(index, src)
 
-  exec('pnpm build && pnpm publish --access public')
+  execSync(`echo "Building v${pkg.version}...`)
+
+  execSync('pnpm build')
+
+  execSync('echo "Done"')
+
+  execSync('pnpm publish --access public')
 }
 
 cli()
