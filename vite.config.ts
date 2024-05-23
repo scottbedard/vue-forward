@@ -10,7 +10,7 @@ export default defineConfig({
       name: 'VueForward',
     },
     rollupOptions: {
-      external: ['vue', 'vue-router', 'vuex'],
+      external: ['vue'],
       output: {
         globals: {
           vue: 'Vue',
@@ -19,7 +19,6 @@ export default defineConfig({
       },
     },
   },
-
   test: {
     coverage: {
       exclude: ['packages'],

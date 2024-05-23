@@ -7,6 +7,13 @@ settings:
 importers:
 
   .:
+    dependencies:
+      vue-router:
+        specifier: ^3.0.0
+        version: 3.6.5(vue@2.7.16)
+      vuex:
+        specifier: ^3.0.0
+        version: 3.6.2(vue@2.7.16)
     devDependencies:
       '@bedard/vue-forward-2':
         specifier: file:versions/2.7
@@ -44,15 +51,9 @@ importers:
       vue:
         specifier: ^2.7.0
         version: 2.7.16
-      vue-router:
-        specifier: ^3.0.0
-        version: 3.6.5(vue@2.7.16)
       vue3:
         specifier: npm:vue@^3.4.0
         version: vue@3.4.21(typescript@5.4.2)
-      vuex:
-        specifier: ^3.0.0
-        version: 3.6.2(vue@2.7.16)
 
 packages:
 

@@ -1,6 +1,10 @@
 {
   "author": "Scott Bedard",
   "description": "The missing createApp function from Vue 2.7",
+  "dependencies": {
+    "vue-router": "^3.0.0",
+    "vuex": "^3.0.0"
+  },
   "devDependencies": {
     "@bedard/vue-forward-2": "file:versions/2.7",
     "@bedard/vue-forward-3": "file:versions/3",
@@ -14,9 +18,7 @@
     "vite": "^5.1.6",
     "vitest": "^1.4.0",
     "vue": "^2.7.0",
-    "vue-router": "^3.0.0",
-    "vue3": "npm:vue@^3.4.0",
-    "vuex": "^3.0.0"
+    "vue3": "npm:vue@^3.4.0"
   },
   "files": [
     "dist",
