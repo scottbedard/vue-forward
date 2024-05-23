@@ -19,7 +19,7 @@ async function cli() {
 
   execSync('echo "Done"')
 
-  execSync('pnpm publish --access public')
+  execSync('npm publish --access public')
 }
 
 cli()
