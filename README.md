@@ -1,4 +1,4 @@
-# `vue-forward`
+# `@bedard/vue-forward`
 
 [![Test](https://github.com/scottbedard/vue-forward/actions/workflows/test.yml/badge.svg)](https://github.com/scottbedard/vue-forward/actions/workflows/test.yml)
 [![Codecov](https://img.shields.io/codecov/c/github/scottbedard/vue-forward?token=IQSd84vERj)](https://codecov.io/gh/scottbedard/vue-forward)
@@ -7,7 +7,7 @@
 
 Behold, the missing [`createApp`](https://vuejs.org/api/application.html#createapp) function from Vue 2.7!
 
-Forward compatibility is key to migrating large, complex codebases. Vue 2.7 provides many 3.x features, but it's missing the critical `createApp` function! This project implements that function while following 3.x as closely as possible.
+Forward compatibility is key to migrating large, complex codebases. Vue 2.7 provides many 3.x features, but it's missing the critical `createApp` function. This project implements that function, allowing you to minimize the diff on a migration branch.
 
 A typical migration might look like this...
 
@@ -15,7 +15,7 @@ A typical migration might look like this...
 2. Migrate anything else that isn't forward-compatible, [see here &rarr;](https://v3-migration.vuejs.org/breaking-changes/)
 3. Upgrade to 3.1 and remove this library 🎉
 
-Now that we know the plan, `npm install @bedard/vue-forward`
+Now that we know the plan, [`npm install @bedard/vue-forward`](https://www.npmjs.com/package/@bedard/vue-forward)
 
 ## Getting started
 
@@ -56,7 +56,7 @@ app.unmount()
 
 ## Vuex & Vue Router
 
-Use [`createStore`](https://vuex.vuejs.org/api/#createstore) and [`createRouter`]() to create a forward compatible stores and routers.
+Use [`createStore`](https://vuex.vuejs.org/api/#createstore) and [`createRouter`](https://router.vuejs.org/api/#createRouter) to create a forward compatible stores and routers.
 
 ```js
 import { createApp, createRouter, createStore, createWebHistory } from '@bedard/vue-forward'
