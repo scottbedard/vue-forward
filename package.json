@@ -1,17 +1,6 @@
 {
-  "name": "@bedard/vue-forward",
-  "version": "1.1.5",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "build:versions": "(cd versions/2.7 && vite build) && (cd versions/3 && vite build)",
-    "build": "vite build",
-    "coverage": "vitest run --coverage",
-    "test": "vitest"
-  },
-  "type": "module",
   "author": "Scott Bedard",
-  "license": "MIT",
+  "description": "The missing createApp function from Vue 2.7",
   "devDependencies": {
     "@bedard/vue-forward-2": "file:versions/2.7",
     "@bedard/vue-forward-3": "file:versions/3",
@@ -29,6 +18,11 @@
     "vue3": "npm:vue@^3.4.0",
     "vuex": "^3.0.0"
   },
+  "license": "MIT",
+  "main": "vue-forward.js",
+  "name": "@bedard/vue-forward",
+  "type": "module",
+  "version": "1.1.5",
   "peerDependencies": {
     "vue-router": "^3.0.0",
     "vuex": "^3.0.0"
@@ -40,5 +34,11 @@
     "vuex": {
       "optional": true
     }
+  },
+  "scripts": {
+    "build:versions": "(cd versions/2.7 && vite build) && (cd versions/3 && vite build)",
+    "build": "vite build",
+    "coverage": "vitest run --coverage",
+    "test": "vitest"
   }
 }
