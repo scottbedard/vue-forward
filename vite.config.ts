@@ -20,7 +20,9 @@ export default defineConfig({
       },
     },
   },
-  plugins: [],
+  plugins: [
+    dts({ logLevel: 'silent' })
+  ],
   test: {
     coverage: {
       exclude: ['packages'],

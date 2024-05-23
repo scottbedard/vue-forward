@@ -2,7 +2,7 @@ import VueRouter from 'vue-router'
 import Vue from 'vue'
 
 type CreateRouterParams = Omit<ConstructorParameters<typeof VueRouter>[0], 'mode'> & {
-  history: ConstructorParameters<typeof VueRouter>[0]['mode']
+  history: 'abstract' | 'history' | 'hash'
 }
 
 export function createRouter(options: CreateRouterParams) {
