@@ -21,7 +21,10 @@ export default defineConfig({
     },
   },
   plugins: [
-    dts({ logLevel: 'silent' })
+    dts({
+      insertTypesEntry: true,
+      logLevel: 'silent',
+    }),
   ],
   test: {
     coverage: {
