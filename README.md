@@ -2,7 +2,7 @@
 
 [![Test](https://github.com/scottbedard/vue-forward/actions/workflows/test.yml/badge.svg)](https://github.com/scottbedard/vue-forward/actions/workflows/test.yml)
 [![Codecov](https://img.shields.io/codecov/c/github/scottbedard/vue-forward?token=IQSd84vERj)](https://codecov.io/gh/scottbedard/vue-forward)
-[![NPM](https://img.shields.io/npm/v/%40bedard%2Fvue-forward?style=flat-square)](https://www.npmjs.com/package/@bedard/vue-forward)
+[![NPM](https://img.shields.io/npm/v/%40bedard%2Fvue-forward)](https://www.npmjs.com/package/@bedard/vue-forward)
 [![License](https://img.shields.io/badge/license-MIT-blue)](https://github.com/scottbedard/vue-forward/blob/main/LICENSE)
 
 Behold, the missing [`createApp`](https://vuejs.org/api/application.html#createapp) function from Vue 2.7!
